@@ -1,10 +1,10 @@
 import React from 'react';
 import {  useState } from 'react';
-import { getRedirectResult } from 'firebase/auth';
-import { auth, signInWithGooglePopup, createUserDocumentFromAuth, signInWithGoogleRedirect,signInAuthUserWithEmailAndPassword, signOutUser } from '../../utils/firebase/firebase.utils';
+// import { getRedirectResult } from 'firebase/auth';
+import { signInWithGooglePopup,signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 import FormInput from '../../components/form-input/form-input.component';
 import Button from '../../components/button/button.component';
-import { UserContext } from '../../context/user.context';
+// import { UserContext } from '../../context/user.context';
 import './sign-in-form.styles.scss';
 
 const defaultFormFields = {
@@ -44,6 +44,7 @@ const SignIn = () => {
 
         try{
             const {user} = await signInAuthUserWithEmailAndPassword(email,password);
+            resetFormFields();
         }catch(error){
             switch(error.code){
                 case 'auth/wrong-password':
